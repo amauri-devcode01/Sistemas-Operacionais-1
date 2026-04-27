@@ -1,0 +1,33 @@
+# Introdução ao Docker
+
+Docker é uma plataforma amplamente utilizada para criar, distribuir e executar aplicações em ambientes isolados chamados containers. Um container reúne o código da aplicação, suas bibliotecas, dependências e configurações necessárias para funcionamento, garantindo que o software execute da mesma forma em diferentes ambientes, como computadores pessoais, servidores locais ou serviços em nuvem. Essa padronização reduz problemas de compatibilidade e facilita o processo de desenvolvimento e implantação.
+
+Os containers funcionam compartilhando o kernel do sistema operacional hospedeiro, utilizando mecanismos de isolamento de processos, rede e armazenamento. Diferentemente das máquinas virtuais, eles não precisam carregar um sistema operacional completo para cada instância criada. Isso permite que sejam iniciados rapidamente e consumam menos recursos computacionais, como memória e processamento.
+
+Já as máquinas virtuais simulam um computador inteiro dentro de outro, exigindo um sistema operacional próprio e maior uso de hardware. Embora ofereçam forte isolamento, costumam ser mais pesadas e lentas para iniciar. Em comparação, os containers são mais leves, rápidos e eficientes, possibilitando executar várias aplicações no mesmo servidor com melhor aproveitamento dos recursos disponíveis.
+
+Por essas características, o Docker se tornou uma das principais ferramentas da computação moderna, sendo amplamente adotado em desenvolvimento de software, integração contínua, microsserviços e ambientes de produção.
+
+---
+
+# Dockerize a Aplicação
+
+Dockerizar uma aplicação consiste em empacotá-la dentro de uma imagem padronizada que contenha todo o ambiente necessário para sua execução, como código-fonte, dependências, bibliotecas e configurações. No contexto da DevStore, esse processo permite transformar as aplicações web em containers portáveis e consistentes, garantindo que funcionem da mesma forma em ambientes de desenvolvimento, testes e produção. Dessa forma, reduz-se significativamente problemas relacionados à incompatibilidade entre sistemas.
+
+Para realizar esse empacotamento, utiliza-se principalmente o arquivo **Dockerfile**, no qual são definidas as instruções para construção da imagem. Nele, especifica-se a imagem base, instalação de dependências, cópia dos arquivos da aplicação, exposição de portas e o comando inicial de execução. Após isso, a imagem é gerada com o Docker e pode ser versionada e reutilizada em diferentes servidores, mantendo um padrão único para toda a infraestrutura da DevStore.
+
+A padronização das imagens oferece diversas vantagens, como facilidade de implantação, escalabilidade e rapidez no provisionamento de novos ambientes. Caso a DevStore possua múltiplos serviços web, cada aplicação pode ser containerizada separadamente, permitindo manutenção independente e melhor organização da arquitetura. Além disso, ferramentas como Docker Compose podem ser utilizadas para orquestrar todos os serviços de forma integrada.
+
+Assim, dockerizar as aplicações web da DevStore representa uma estratégia eficiente para modernizar o processo de entrega de software, aumentar a confiabilidade dos deployments e otimizar o uso de recursos computacionais.
+
+---
+
+# Pipeline de Deploy
+
+O pipeline de deploy é um processo automatizado que permite que o código desenvolvido localmente seja enviado de forma rápida e segura até o ambiente de produção na nuvem. Na DevStore, esse fluxo começa quando o desenvolvedor finaliza alterações no sistema e envia o código para um repositório de versionamento, como Git. A partir desse momento, ferramentas de integração contínua identificam a nova atualização e iniciam automaticamente as etapas de validação e entrega.
+
+Na sequência, o pipeline executa testes automatizados, análises de qualidade e a construção de uma nova imagem Docker contendo a aplicação atualizada e todas as dependências necessárias. Essa imagem padronizada garante que o sistema funcione da mesma maneira em qualquer ambiente, evitando falhas causadas por diferenças entre máquinas de desenvolvimento e servidores de produção. Após a criação, a imagem é armazenada em um registro de containers para distribuição.
+
+Com a imagem disponível, inicia-se a etapa de deploy na nuvem. O servidor ou serviço de hospedagem realiza o download da nova versão do container e substitui a versão anterior da aplicação, muitas vezes sem interrupção do serviço. Esse processo pode incluir balanceamento de carga, rollback automático em caso de erro e monitoramento contínuo para garantir estabilidade.
+
+Dessa forma, o pipeline de deploy automatiza todo o caminho entre o computador do desenvolvedor e a infraestrutura em nuvem, reduzindo erros manuais, acelerando entregas e tornando a DevStore mais eficiente, escalável e preparada para atualizações frequentes.
